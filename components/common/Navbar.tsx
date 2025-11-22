@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { UserButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { LayoutDashboard } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -15,6 +18,8 @@ const navLinks = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useUser();
+  const userData = useQuery(api.users.getUser, user ? { externalId: user.id } : "skip");
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -63,6 +68,15 @@ export function Navbar() {
               </Link>
             </SignedOut>
             <SignedIn>
+              {userData?.role === "owner" && (
+                <Link
+                  href="/dashboard"
+                  className="hidden md:inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 bg-gray-100 text-gray-900 hover:bg-gray-200 h-10 px-4 py-2 mr-2"
+                >
+                  <LayoutDashboard className="mr-2 h-4 w-4" />
+                  Dashboard
+                </Link>
+              )}
               <UserButton afterSignOutUrl="/" />
             </SignedIn>
 

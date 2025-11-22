@@ -1,20 +1,20 @@
-import { SignUp } from '@clerk/nextjs'
+import { SignUp } from "@clerk/nextjs";
 
 export default function Page() {
   return (
     <div className="min-h-screen w-full relative">
-  {/* Dashed Bottom Fade Grid */}
-  <div
-    className="absolute inset-0 z-0"
-    style={{
-      backgroundImage: `
-        linear-gradient(to right, #e7e5e4 1px, transparent 1px),
-        linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
-      `,
-      backgroundSize: "20px 20px",
-      backgroundPosition: "0 0, 0 0",
-      maskImage: `
-         repeating-linear-gradient(
+      {/* Dashed Bottom Fade Grid */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+            linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+          `,
+          backgroundSize: "20px 20px",
+          backgroundPosition: "0 0, 0 0",
+          maskImage: `
+            repeating-linear-gradient(
               to right,
               black 0px,
               black 3px,
@@ -29,9 +29,9 @@ export default function Page() {
               transparent 8px
             ),
             radial-gradient(ellipse 100% 80% at 50% 100%, #000 50%, transparent 90%)
-      `,
-      WebkitMaskImage: `
-  repeating-linear-gradient(
+          `,
+          WebkitMaskImage: `
+            repeating-linear-gradient(
               to right,
               black 0px,
               black 3px,
@@ -46,14 +46,23 @@ export default function Page() {
               transparent 8px
             ),
             radial-gradient(ellipse 100% 80% at 50% 100%, #000 50%, transparent 90%)
-      `,
-      maskComposite: "intersect",
-      WebkitMaskComposite: "source-in",
-    }}
-  />
-    <div className='flex h-screen items-center justify-center'>
- <SignUp />
+          `,
+          maskComposite: "intersect",
+          WebkitMaskComposite: "source-in",
+        }}
+      />
+
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4">
+        <div className="mb-8 text-center">
+          <h1 className="mb-2 text-4xl font-bold tracking-tight text-gray-900">
+            Join Dwell
+          </h1>
+          <p className="text-lg text-gray-600">
+            Create an account to get started
+          </p>
+        </div>
+        <SignUp />
       </div>
-          </div>
-   )
+    </div>
+  );
 }

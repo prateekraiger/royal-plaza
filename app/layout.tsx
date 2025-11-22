@@ -6,6 +6,7 @@ import { Navbar } from "@/components/common/Navbar";
 import { Footer } from "@/components/common/Footer";
 import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 import { UserSync } from "@/components/auth/UserSync";
+import { RoleCheck } from "@/components/auth/RoleCheck";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
         <body className={poppins.className}>
           <div className="flex min-h-screen flex-col font-normal">
             <UserSync />
+            <RoleCheck />
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />

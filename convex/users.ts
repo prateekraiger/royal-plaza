@@ -1,4 +1,4 @@
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 export const upsertUser = mutation({
@@ -25,7 +25,24 @@ export const upsertUser = mutation({
       externalId: args.externalId,
       name: args.name,
       email: args.email,
-      role: "guest",
+      role: "pending",
     });
+  },
+});
+
+export const getUser = query({
+  args: { externalId: v.string() },
+  handler: async (ctx, args) => {
+    return await ctx.db
+      .query("users")
+      .withIndex("byExternalId", (q) => q.eq("externalId", args.externalId))
+      .unique();
+  },
+});
+
+export const updateUserRole = mutation({
+  args: { userId: v.id("users"), role: v.union(v.literal("guest"), v.literal("owner")) },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.userId, { role: args.role });
   },
 });

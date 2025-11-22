@@ -6,6 +6,6 @@ export default defineSchema({
     externalId: v.string(),
     name: v.string(),
     email: v.string(),
-    role: v.union(v.literal("guest"), v.literal("owner"), v.literal("admin")),
+    role: v.union(v.literal("guest"), v.literal("owner"), v.literal("admin"), v.literal("pending")),
   }).index("byExternalId", ["externalId"]),
 });
