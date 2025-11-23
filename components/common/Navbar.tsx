@@ -75,7 +75,7 @@ export function Navbar() {
             </SignedOut>
 
             <SignedIn>
-              {userData?.role === "owner" && (
+              {(userData?.role === "owner" || userData?.role === "admin") && (
                 <Link href="/dashboard" className="hidden sm:block">
                   <Button variant="outline" size="sm" className="gap-2">
                     <LayoutDashboard className="h-4 w-4" />
@@ -140,7 +140,7 @@ export function Navbar() {
                 </SignedOut>
 
                 <SignedIn>
-                  {userData?.role === "owner" && (
+                  {(userData?.role === "owner" || userData?.role === "admin") && (
                     <Link href="/dashboard" onClick={() => setIsOpen(false)}>
                       <Button variant="outline" className="w-full gap-2">
                         <LayoutDashboard className="h-4 w-4" />
