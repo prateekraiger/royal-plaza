@@ -72,6 +72,17 @@ export const get = query({
   },
 });
 
+export const getRoom = query({
+  args: { id: v.id("rooms") },
+  handler: async (ctx, args) => {
+    const room = await ctx.db.get(args.id);
+    if (!room) {
+      throw new ConvexError("Room not found");
+    }
+    return room;
+  },
+});
+
 // OWNER: Get only rooms owned by the current user
 export const getMyRooms = query({
   handler: async (ctx) => {
@@ -97,7 +108,7 @@ export const create = mutation({
     description: v.string(),
     photos: v.array(v.string()),
     maxGuests: v.number(),
-    features: v.optional(v.array(v.string())),
+    highlights: v.array(v.string()),
   },
   handler: async (ctx, args) => {
     const user = await getUser(ctx);
@@ -127,7 +138,7 @@ export const update = mutation({
     photos: v.optional(v.array(v.string())),
     maxGuests: v.optional(v.number()),
     isAvailable: v.optional(v.boolean()),
-    features: v.optional(v.array(v.string())),
+    highlights: v.optional(v.array(v.string())),
   },
   handler: async (ctx, args) => {
     const user = await getUser(ctx);

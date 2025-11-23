@@ -18,15 +18,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Plus, Trash2 } from "lucide-react";
+import { AVAILABLE_HIGHLIGHTS } from "@/lib/highlights";
 
-const AVAILABLE_HIGHLIGHTS = [
-  "Free WiFi",
-  "Room Service",
-  "Gym",
-  "Swimming Pool",
-  "Spa",
-  "Mini-Fridge",
-];
+
 
 export function CreateRoomModal() {
   const createRoom = useMutation(api.rooms.create);
@@ -39,7 +33,7 @@ export function CreateRoomModal() {
     description: string;
     maxGuests: string;
     photos: string[];
-    features: string[];
+    highlights: string[];
   }>({
     title: "",
     location: "",
@@ -47,7 +41,7 @@ export function CreateRoomModal() {
     description: "",
     maxGuests: "",
     photos: ["", ""], // Start with 2 empty slots
-    features: [],
+    highlights: [],
   });
 
   const handleChange = (
@@ -77,21 +71,21 @@ export function CreateRoomModal() {
     }));
   };
 
-  const handleFeatureToggle = (feature: string) => {
+  const handleHighlightToggle = (highlightKey: string) => {
     setFormData((prev) => {
-      const currentFeatures = prev.features;
-      if (currentFeatures.includes(feature)) {
+      const currentHighlights = prev.highlights;
+      if (currentHighlights.includes(highlightKey)) {
         return {
           ...prev,
-          features: currentFeatures.filter((f) => f !== feature),
+          highlights: currentHighlights.filter((h) => h !== highlightKey),
         };
       } else {
-        if (currentFeatures.length >= 3) {
+        if (currentHighlights.length >= 3) {
           return prev; // Prevent selecting more than 3
         }
         return {
           ...prev,
-          features: [...currentFeatures, feature],
+          highlights: [...currentHighlights, highlightKey],
         };
       }
     });
@@ -120,7 +114,7 @@ export function CreateRoomModal() {
         description: formData.description,
         maxGuests: Number(formData.maxGuests),
         photos: validPhotos,
-        features: formData.features,
+        highlights: formData.highlights,
       });
 
       setOpen(false);
@@ -131,7 +125,7 @@ export function CreateRoomModal() {
         description: "",
         maxGuests: "",
         photos: ["", ""],
-        features: [],
+        highlights: [],
       });
     } catch (error) {
       console.error("Failed to create room:", error);
@@ -236,24 +230,24 @@ export function CreateRoomModal() {
                 Highlights
               </Label>
               <div className="col-span-3 grid grid-cols-2 gap-2">
-                {AVAILABLE_HIGHLIGHTS.map((feature) => (
-                  <div key={feature} className="flex items-center space-x-2">
+                {AVAILABLE_HIGHLIGHTS.map((highlight) => (
+                  <div key={highlight.key} className="flex items-center space-x-2">
                     <Checkbox
-                      id={feature}
-                      checked={formData.features.includes(feature)}
-                      onCheckedChange={() => handleFeatureToggle(feature)}
-                      disabled={!formData.features.includes(feature) && formData.features.length >= 3}
+                      id={highlight.key}
+                      checked={formData.highlights.includes(highlight.key)}
+                      onCheckedChange={() => handleHighlightToggle(highlight.key)}
+                      disabled={!formData.highlights.includes(highlight.key) && formData.highlights.length >= 3}
                     />
                     <Label
-                      htmlFor={feature}
+                      htmlFor={highlight.key}
                       className="text-sm font-normal cursor-pointer"
                     >
-                      {feature}
+                      {highlight.label}
                     </Label>
                   </div>
                 ))}
                 <p className="text-xs text-muted-foreground col-span-2 mt-1">
-                  Select up to 3 highlights
+                  Select exactly 3 highlights
                 </p>
               </div>
             </div>

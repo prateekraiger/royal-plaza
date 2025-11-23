@@ -18,14 +18,14 @@ export default defineSchema({
     photos: v.array(v.string()),
     maxGuests: v.number(),
     isAvailable: v.boolean(),
-    features: v.optional(v.array(v.string())),
+    highlights: v.array(v.string()),
   }),
 
   bookings: defineTable({
     userId: v.id("users"),
     roomId: v.id("rooms"),
-    checkIn: v.number(), // Storing as timestamp
-    checkOut: v.number(), // Storing as timestamp
+    checkIn: v.number(),
+    checkOut: v.number(),
     status: v.union(v.literal("confirmed"), v.literal("cancelled")),
   }),
 });
