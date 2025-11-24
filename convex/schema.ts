@@ -20,7 +20,7 @@ export default defineSchema({
     maxGuests: v.number(),
     isAvailable: v.boolean(),
     highlights: v.array(v.string()),
-  }),
+  }).index("by_ownerId", ["ownerId"]),
 
   bookings: defineTable({
     userId: v.id("users"),
@@ -28,5 +28,5 @@ export default defineSchema({
     checkIn: v.number(),
     checkOut: v.number(),
     status: v.union(v.literal("confirmed"), v.literal("cancelled"), v.literal("pending")),
-  }),
+  }).index("by_roomId", ["roomId"]),
 });

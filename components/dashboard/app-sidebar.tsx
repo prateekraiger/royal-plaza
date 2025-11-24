@@ -29,12 +29,6 @@ const items = [
     url: "/dashboard/bookings",
     icon: Calendar,
   },
-
-  {
-    title: "Settings",
-    url: "/dashboard/settings",
-    icon: Settings,
-  },
 ];
 
 export function AppSidebar() {

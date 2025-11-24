@@ -9,6 +9,7 @@
  */
 
 import type * as bookings from "../bookings.js";
+import type * as dashboard from "../dashboard.js";
 import type * as rooms from "../rooms.js";
 import type * as users from "../users.js";
 
@@ -20,6 +21,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   bookings: typeof bookings;
+  dashboard: typeof dashboard;
   rooms: typeof rooms;
   users: typeof users;
 }>;
