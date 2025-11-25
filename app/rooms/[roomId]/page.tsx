@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useQuery, useMutation } from "convex/react";
+import { useQuery, useMutation, useAction } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { Button } from "@/components/ui/button";
@@ -51,7 +51,7 @@ export default function RoomDetailsPage() {
   // Fetch existing bookings for availability
   const existingBookings = useQuery(api.bookings.getBookingsByRoom, { roomId });
 
-  const createBooking = useMutation(api.bookings.create);
+  const createCheckoutSession = useAction(api.payments.createCheckoutSession);
 
   if (room === undefined || owner === undefined) {
     return (
@@ -95,18 +95,23 @@ export default function RoomDetailsPage() {
     setBookingError(null);
 
     try {
-      await createBooking({
+      // Create Stripe Checkout Session
+      const { sessionUrl } = await createCheckoutSession({
         roomId,
         checkIn: checkIn.getTime(),
         checkOut: checkOut.getTime(),
+        roomTitle: room.title,
+        pricePerNight: room.pricePerNight,
+        numberOfNights,
       });
-      setIsSuccess(true);
-      setTimeout(() => {
-        router.push("/my-bookings");
-      }, 2000);
+
+      if (sessionUrl) {
+        window.location.href = sessionUrl;
+      } else {
+        throw new Error("Failed to create payment session");
+      }
     } catch (error) {
       setBookingError(getFormattedErrorMessage(error));
-    } finally {
       setIsBooking(false);
     }
   };
@@ -342,7 +347,7 @@ export default function RoomDetailsPage() {
                 onClick={handleBookRoom}
                 disabled={!checkIn || !checkOut || isBooking || numberOfNights <= 0}
               >
-                {isBooking ? "Booking..." : "Book This Room"}
+                {isBooking ? "Redirecting to Payment..." : "Book This Room"}
               </Button>
             )}
 

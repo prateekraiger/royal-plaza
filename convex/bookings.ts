@@ -189,3 +189,26 @@ export const cancel = mutation({
     });
   },
 });
+
+// Get a single booking by ID (internal use)
+export const getBookingById = query({
+  args: { bookingId: v.id("bookings") },
+  handler: async (ctx, args) => {
+    const booking = await ctx.db.get(args.bookingId);
+    if (!booking) return null;
+
+    const room = await ctx.db.get(booking.roomId);
+    return { ...booking, room };
+  },
+});
+
+// Confirm a booking (called after successful payment)
+export const confirmBooking = mutation({
+  args: { bookingId: v.id("bookings") },
+  handler: async (ctx, args) => {
+    // In a real app, verify the payment with Stripe here or via webhook
+    await ctx.db.patch(args.bookingId, {
+      status: "confirmed",
+    });
+  },
+});

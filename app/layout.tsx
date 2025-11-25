@@ -8,6 +8,7 @@ import { Footer } from "@/components/common/Footer";
 import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 import { UserSync } from "@/components/auth/UserSync";
 import { RoleCheck } from "@/components/auth/RoleCheck";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
+            <Toaster />
           </div>
         </body>
       </html>

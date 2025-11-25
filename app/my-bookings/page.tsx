@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "convex/react";
+import { useQuery, useMutation, useAction } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,9 @@ import { CalendarIcon, MapPin, Users, Loader2, CreditCard } from "lucide-react";
 import { format, differenceInDays } from "date-fns";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Id } from "@/convex/_generated/dataModel";
 import {
   Table,
   TableBody,
@@ -16,10 +19,53 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { toast } from "sonner";
 
 export default function MyBookingsPage() {
   const { isLoaded } = useUser();
   const bookings = useQuery(api.bookings.getMyBookings);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const confirmBooking = useMutation(api.bookings.confirmBooking);
+  const createCheckoutSession = useAction(api.payments.createCheckoutSession);
+  const [processingId, setProcessingId] = useState<Id<"bookings"> | null>(null);
+
+  useEffect(() => {
+    const success = searchParams.get("success");
+    const bookingId = searchParams.get("bookingId");
+
+    if (success === "true" && bookingId) {
+      const confirm = async () => {
+        try {
+          await confirmBooking({ bookingId: bookingId as Id<"bookings"> });
+          toast.success("Payment successful! Booking confirmed.");
+          // Remove query params
+          router.replace("/my-bookings");
+        } catch (error) {
+          console.error("Failed to confirm booking:", error);
+          toast.error("Failed to confirm booking. Please contact support.");
+        }
+      };
+      confirm();
+    } else if (searchParams.get("canceled") === "true") {
+      toast.error("Payment cancelled.");
+      router.replace("/my-bookings");
+    }
+  }, [searchParams, confirmBooking, router]);
+
+  const handlePayNow = async (bookingId: Id<"bookings">) => {
+    setProcessingId(bookingId);
+    try {
+      const { sessionUrl } = await createCheckoutSession({ bookingId });
+      if (sessionUrl) {
+        window.location.href = sessionUrl;
+      }
+    } catch (error) {
+      console.error("Payment error:", error);
+      toast.error("Failed to initiate payment.");
+      setProcessingId(null);
+    }
+  };
 
   if (!isLoaded || bookings === undefined) {
     return (
@@ -130,15 +176,25 @@ export default function MyBookingsPage() {
                       ₹{grandTotal.toLocaleString()}
                     </TableCell>
                     <TableCell className="text-right">
-                      {booking.status === "confirmed" ? (
-                        <Button size="sm" className="gap-2">
-                          <CreditCard className="h-4 w-4" />
+                      {booking.status === "pending" && (
+                        <Button
+                          size="sm"
+                          className="gap-2"
+                          onClick={() => handlePayNow(booking._id)}
+                          disabled={processingId === booking._id}
+                        >
+                          {processingId === booking._id ? (
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                          ) : (
+                            <CreditCard className="h-4 w-4" />
+                          )}
                           Pay Now
                         </Button>
-                      ) : (
-                        <Button variant="outline" size="sm" className="rounded-full">
-                          Pay now
-                        </Button>
+                      )}
+                      {booking.status === "confirmed" && (
+                         <span className="text-green-600 font-medium text-sm flex items-center justify-end gap-1">
+                           Paid
+                         </span>
                       )}
                     </TableCell>
                   </TableRow>
