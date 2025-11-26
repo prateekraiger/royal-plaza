@@ -35,8 +35,9 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="font-bold text-xl md:text-2xl tracking-tight bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                DWELL
+              <img src="/dwell.png" alt="Dwell Logo" className="h-8 w-8 bg-slate-900 rounded-md" />
+              <span className="font-bold text-xl md:text-2xl tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent font-galada">
+              Dwell
               </span>
             </Link>
           </div>

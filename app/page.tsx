@@ -1,37 +1,18 @@
-import Link from "next/link";
+import { HeroSection } from "@/components/ui/dynamic-hero";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center h-[80vh] bg-muted">
-        <div className="absolute inset-0 overflow-hidden">
-           {/* Placeholder for Hero Image - using a gradient for now */}
-           <div className="w-full h-full bg-gradient-to-r from-slate-900 to-slate-700 opacity-90" />
-        </div>
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-            Experience Luxury Like Never Before
-          </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-            Discover a sanctuary of peace and elegance in the heart of the city. Your perfect getaway awaits at Dwell.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/rooms"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-            >
-              View Rooms
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
+
+      <HeroSection
+        heading="Experience Luxury Like Never Before"
+        tagline="Discover a sanctuary of peace and elegance in the heart of the city. Your perfect getaway awaits at Dwell."
+        buttonText="View Rooms"
+        buttonLink="/rooms"
+        imageUrl="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        videoUrl="https://ik.imagekit.io/mtk2a0sx6/hotel.mp4"
+      />
 
       {/* Featured Section */}
       <section className="py-20 px-4 md:px-8 bg-background">

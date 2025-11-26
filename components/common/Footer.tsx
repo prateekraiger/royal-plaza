@@ -23,8 +23,11 @@ export function Footer() {
       <Section>
         <Container className="grid gap-12 md:grid-cols-[1.5fr_0.5fr_0.5fr_0.5fr]">
           <div className="not-prose flex flex-col gap-6">
-            <Link href="/">
-              <h3 className="text-2xl font-bold">Dwell</h3>
+            <Link href="/" className="flex items-center space-x-2">
+              <img src="/dwell.png" alt="Dwell Logo" className="h-8 w-8 bg-slate-900 rounded-md" />
+              <span className="text-xl md:text-2xl tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent font-semibold font-galada">
+              Dwell
+              </span>
             </Link>
             <p className="text-muted-foreground">
               Experience luxury redefined. At Dwell, we blend modern elegance

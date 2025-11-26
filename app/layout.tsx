@@ -24,6 +24,9 @@ export default function RootLayout({
   return (
     <ConvexClientProvider>
       <html lang="en">
+        <head>
+          <link rel="icon" href="/dwell.png" />
+        </head>
         <body className={poppins.className}>
           <div className="flex min-h-screen flex-col font-normal">
             <UserSync />
