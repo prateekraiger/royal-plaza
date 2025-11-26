@@ -29,4 +29,11 @@ export default defineSchema({
     checkOut: v.number(),
     status: v.union(v.literal("confirmed"), v.literal("cancelled"), v.literal("pending")),
   }).index("by_roomId", ["roomId"]),
+
+  payments: defineTable({
+    bookingId: v.id("bookings"),
+    amount: v.number(),
+    stripeId: v.string(),
+    status: v.string(),
+  }).index("by_bookingId", ["bookingId"]),
 });

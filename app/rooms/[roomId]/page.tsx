@@ -88,6 +88,8 @@ export default function RoomDetailsPage() {
   const serviceFee = Math.round(totalPrice * 0.12); // 12% service fee
   const grandTotal = totalPrice + serviceFee;
 
+  const createBooking = useMutation(api.bookings.create);
+
   const handleBookRoom = async () => {
     if (!checkIn || !checkOut) return;
 
@@ -95,14 +97,16 @@ export default function RoomDetailsPage() {
     setBookingError(null);
 
     try {
-      // Create Stripe Checkout Session
-      const { sessionUrl } = await createCheckoutSession({
+      // 1. Create Booking
+      const bookingId = await createBooking({
         roomId,
         checkIn: checkIn.getTime(),
         checkOut: checkOut.getTime(),
-        roomTitle: room.title,
-        pricePerNight: room.pricePerNight,
-        numberOfNights,
+      });
+
+      // 2. Create Stripe Checkout Session
+      const { sessionUrl } = await createCheckoutSession({
+        bookingId,
       });
 
       if (sessionUrl) {
