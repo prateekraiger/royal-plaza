@@ -16,7 +16,7 @@ export const createCheckoutSession = action({
     });
 
     // Get domain and ensure it has proper scheme and no trailing slash
-    let domain = process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000";
+    let domain = process.env.HOST_URL || "http://localhost:3000";
     domain = domain.replace(/\/$/, ""); // Remove trailing slash
 
     // Ensure domain has a scheme
