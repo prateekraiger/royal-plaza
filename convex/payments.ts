@@ -12,16 +12,12 @@ export const createCheckoutSession = action({
   },
   handler: async (ctx, args): Promise<{ sessionUrl: string | null }> => {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-      apiVersion: "2024-11-20.acacia" as any, // Cast to any to avoid version mismatch errors if types are outdated
+      apiVersion: "2024-06-20" as any, // Cast to any to avoid version mismatch errors if types are outdated
     });
 
-    // Get domain and ensure it has proper scheme and no trailing slash
-    let domain = process.env.HOST_URL || "http://localhost:3000";
-    domain = domain.replace(/\/$/, ""); // Remove trailing slash
-
-    // Ensure domain has a scheme
-    if (!domain.startsWith("http://") && !domain.startsWith("https://")) {
-      domain = `https://${domain}`;
+    const domain = process.env.HOST_URL;
+    if (!domain) {
+      throw new Error("HOST_URL environment variable is not set in Convex.");
     }
 
     // Fetch booking details
