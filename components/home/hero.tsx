@@ -9,7 +9,7 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg"
+          src="https://i.pinimg.com/736x/47/2a/dd/472add28786aa328599861a37a1371ab.jpg"
           alt="Luxury Interior"
           className="w-full h-full object-cover opacity-60 scale-105 animate-[pulse_10s_ease-in-out_infinite] transition-transform duration-[20s] hover:scale-100"
         />

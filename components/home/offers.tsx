@@ -34,7 +34,7 @@ export function Offers() {
 
                 {/* Main Feature (Vertical) */}
                 <div className="lg:col-span-1 relative group rounded-2xl overflow-hidden cursor-pointer h-[500px] lg:h-full">
-                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4734259a-bad7-422f-981e-ce01e79184f2_1600w.jpg" alt="Spa Wellness" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    <img src="https://i.pinimg.com/736x/9f/e1/49/9fe149453509ae607549f506aa057147.jpg" alt="Spa Wellness" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                     <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
 
                     {/* Floating Badge */}
@@ -62,7 +62,7 @@ export function Offers() {
 
                     {/* Top Wide Item */}
                     <div className="relative group rounded-2xl overflow-hidden cursor-pointer">
-                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" alt="Dining" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                        <img src="https://i.pinimg.com/1200x/45/ed/24/45ed240b0a86dca62c386052e699f2ca.jpg" alt="Dining" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-stone-900/40 group-hover:bg-stone-900/50 transition-colors"></div>
 
                         <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
@@ -83,25 +83,27 @@ export function Offers() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* Box 1 */}
                         <div className="relative group rounded-2xl overflow-hidden bg-stone-100 cursor-pointer">
+                            <img src="https://assets.website-files.com/5b22716582425eedddd833cc/5bfbae2eda4ea8db4d3eaa2f_1.jpg" alt="Suite" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                            <div className="absolute inset-0 bg-stone-900/30 group-hover:bg-stone-900/40 transition-colors"></div>
+
                             <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
                                 <div className="flex justify-between items-start">
-                                    <span className="text-5xl text-stone-200 serif group-hover:text-stone-300 transition-colors font-playfair font-medium">03</span>
-                                    <Gem className="text-stone-400 group-hover:text-stone-900 transition-colors w-5 h-5" />
+                                    <span className="text-5xl text-white serif group-hover:text-stone-200 transition-colors font-playfair font-medium">03</span>
+                                    <Gem className="text-stone-300 group-hover:text-white transition-colors w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h4 className="text-xl text-stone-900 font-medium mb-1">Suite Dreams</h4>
-                                    <p className="text-xs text-stone-500 leading-relaxed mb-4">Stay 3 nights, pay for 2 in any of our Signature Suites.</p>
-                                    <span className="text-[10px] uppercase tracking-wider text-stone-900 font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    <h4 className="text-xl text-white font-medium mb-1 drop-shadow-md">Suite Dreams</h4>
+                                    <p className="text-xs text-stone-200 leading-relaxed mb-4 drop-shadow-sm">Stay 3 nights, pay for 2 in any of our Signature Suites.</p>
+                                    <span className="text-[10px] uppercase tracking-wider text-white font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                                         Check Availability <ChevronRight className="w-2.5 h-2.5" />
                                     </span>
                                 </div>
                             </div>
-                            <div className="absolute right-0 bottom-0 w-24 h-24 bg-gradient-to-tl from-stone-200 to-transparent rounded-tl-full opacity-50"></div>
                         </div>
 
                         {/* Box 2 (Image) */}
                         <div className="relative group rounded-2xl overflow-hidden cursor-pointer">
-                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4734259a-bad7-422f-981e-ce01e79184f2_1600w.jpg" alt="City View" className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                            <img src="https://i.pinimg.com/1200x/7e/4c/0d/7e4c0d783db307edb83040c6c65f8f2e.jpg" alt="City View" className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                             <div className="absolute inset-0 bg-stone-900/20 group-hover:bg-transparent transition-colors"></div>
                             <div className="absolute bottom-6 left-6 right-6">
                                 <div className="glass-badge p-3 rounded-xl flex items-center justify-between group-hover:bg-white group-hover:text-stone-900 transition-colors duration-300">
