@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function Dining() {
   return (
-    <section id="dining" className="py-24 bg-white text-stone-900">
+    <section className="py-24 bg-white text-stone-900">
         <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col items-center justify-center mb-16">
                 <span className="text-stone-400 text-xs tracking-widest uppercase mb-3">Gastronomy</span>

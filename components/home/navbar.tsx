@@ -54,19 +54,19 @@ export function Navbar() {
               Suites
             </Link>
             <Link
-              href="/#dining"
+              href="/dining"
               className="hover:text-white transition-colors"
             >
               Dining
             </Link>
             <Link
-              href="/#offers"
+              href="/offers"
               className="hover:text-white transition-colors"
             >
               Offers
             </Link>
             <Link
-              href="/#gallery"
+              href="/gallery"
               className="hover:text-white transition-colors"
             >
               Gallery
@@ -128,21 +128,21 @@ export function Navbar() {
             Suites
           </Link>
           <Link
-            href="/#dining"
+            href="/dining"
             className="text-stone-300 hover:text-white text-sm uppercase tracking-widest"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Dining
           </Link>
           <Link
-            href="/#offers"
+            href="/offers"
             className="text-stone-300 hover:text-white text-sm uppercase tracking-widest"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Offers
           </Link>
           <Link
-            href="/#gallery"
+            href="/gallery"
             className="text-stone-300 hover:text-white text-sm uppercase tracking-widest"
             onClick={() => setIsMobileMenuOpen(false)}
           >

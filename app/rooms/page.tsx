@@ -8,7 +8,7 @@ export default function RoomsPage() {
   const rooms = useQuery(api.rooms.get, {});
 
   return (
-    <div className="container mx-auto py-12 px-4 md:px-8">
+    <div className="container mx-auto pt-32 pb-12 px-4 md:px-8">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">Our Rooms & Suites</h1>
         <p className="text-muted-foreground max-w-2xl mx-auto">

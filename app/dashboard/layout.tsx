@@ -55,7 +55,7 @@ export default function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <div className="flex w-full min-h-[calc(100vh-8rem)]">
+      <div className="flex w-full min-h-[calc(100vh-8rem)] pt-24">
         <AppSidebar />
         <SidebarInset className="flex-1">
           <header className="sticky top-16 z-10 flex h-14 shrink-0 items-center gap-2 border-b bg-background px-6">

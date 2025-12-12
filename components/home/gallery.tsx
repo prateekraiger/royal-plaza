@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export function Gallery() {
   return (
-    <section id="gallery" className="py-24 bg-stone-50">
+    <section className="py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-6">
             <div className="flex justify-between items-end mb-10">
                 <h2 className="text-3xl text-stone-900 tracking-tight font-playfair font-medium">Visual Journey</h2>

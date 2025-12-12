@@ -52,7 +52,7 @@ export default function Page() {
         }}
       />
 
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4">
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pt-24">
         <div className="mb-8 text-center">
           <h1 className="mb-2 text-4xl font-bold tracking-tight text-gray-900">
            Good to see you again

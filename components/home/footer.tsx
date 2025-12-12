@@ -26,7 +26,7 @@ export function Footer() {
             <h4 className="text-stone-100 uppercase text-[10px] tracking-widest mb-6">Explore</h4>
             <ul className="space-y-3">
               <li><Link href="/rooms" className="hover:text-stone-200 transition-colors">Rooms & Suites</Link></li>
-              <li><Link href="/#dining" className="hover:text-stone-200 transition-colors">Dining</Link></li>
+              <li><Link href="/dining" className="hover:text-stone-200 transition-colors">Dining</Link></li>
               <li><Link href="#" className="hover:text-stone-200 transition-colors">Wellness & Spa</Link></li>
               <li><Link href="#" className="hover:text-stone-200 transition-colors">Meetings & Events</Link></li>
             </ul>
@@ -55,7 +55,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-          <p>© 2023 Royal Plaza Hotel. All rights reserved.</p>
+          <p>© 2025 Royal Plaza Hotel. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-stone-200 transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-stone-200 transition-colors">Terms of Service</Link>

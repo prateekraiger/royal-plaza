@@ -42,7 +42,7 @@ export function Hero() {
                 <span className="text-xs uppercase tracking-wider text-stone-500">Partly Cloudy</span>
               </div>
               <p className="text-stone-400 text-sm font-light leading-relaxed">
-                An sanctuary of tranquility in the heart of the city. Where timeless heritage meets contemporary luxury.
+                A sanctuary of tranquility in the heart of the city. Where timeless heritage meets contemporary luxury.
               </p>
             </div>
           </div>
@@ -57,7 +57,7 @@ export function Hero() {
               <label className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-stone-400 mb-0.5 cursor-pointer">
                 <Calendar className="w-3 h-3" /> Dates
               </label>
-              <div className="text-sm text-stone-100 font-medium whitespace-nowrap">Oct 24 — Oct 28</div>
+              <div className="text-sm text-stone-100 font-medium whitespace-nowrap">Oct 24, 2025 — Oct 28, 2025</div>
             </div>
 
             {/* Guests */}

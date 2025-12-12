@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function Offers() {
   return (
-    <section className="bg-white pt-24 pb-32 overflow-hidden" id="offers">
+    <section className="bg-white pt-24 pb-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
             {/* Section Header */}
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
