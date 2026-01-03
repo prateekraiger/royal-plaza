@@ -24,14 +24,14 @@ export function Footer() {
         <Container className="grid gap-12 md:grid-cols-[1.5fr_0.5fr_0.5fr_0.5fr]">
           <div className="not-prose flex flex-col gap-6">
             <Link href="/" className="flex items-center space-x-2">
-              <img src="/dwell.png" alt="Dwell Logo" className="h-8 w-8 bg-slate-900 rounded-md" />
-              <span className="text-xl md:text-2xl tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent font-semibold font-galada">
-              Dwell
+              {/* <img src="/dwell.png" alt="Royal Plaza Logo" className="h-8 w-8 bg-slate-900 rounded-md" /> */}
+              <span className="text-xl md:text-2xl tracking-tight text-primary font-semibold font-playfair">
+              Royal Plaza
               </span>
             </Link>
             <p className="text-muted-foreground">
-              Experience luxury redefined. At Dwell, we blend modern elegance
-              with timeless comfort to create unforgettable stays.
+              Experience the pinnacle of luxury. At Royal Plaza, we define elegance
+              and timeless comfort for an unforgettable stay.
             </p>
           </div>
           <div className="flex flex-col gap-2">
@@ -157,7 +157,7 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()}{" "}
             <Link href="/" className="hover:text-foreground transition-colors">
-              Dwell
+              Royal Plaza
             </Link>
             . All rights reserved.
           </p>

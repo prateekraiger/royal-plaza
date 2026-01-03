@@ -21,7 +21,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Royal Plaza | Luxury Hotel & Resort",
-  description: "Experience luxury like never before at Royal Plaza.",
+  description: "Experience the pinnacle of luxury at Royal Plaza. Unforgettable stays, world-class dining, and timeless elegance await.",
 };
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
     <ConvexClientProvider>
       <html lang="en" className="scroll-smooth">
         <head>
-          <link rel="icon" href="/dwell.png" />
+          {/* <link rel="icon" href="/dwell.png" /> */}
         </head>
         <body
            className={`${inter.variable} ${cormorant.variable} ${playfair.variable} antialiased bg-stone-50 text-stone-600`}
